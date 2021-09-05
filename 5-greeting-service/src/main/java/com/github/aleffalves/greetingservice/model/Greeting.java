@@ -1,4 +1,4 @@
-package com.github.aleffalves.greetingservice;
+package com.github.aleffalves.greetingservice.model;
 
 public class Greeting {
 
