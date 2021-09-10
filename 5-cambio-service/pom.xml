@@ -8,10 +8,10 @@
 		<version>2.5.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.github.aleffalves</groupId>
-	<artifactId>5-greeting-service</artifactId>
+	<groupId>com.github.aleff.alves</groupId>
+	<artifactId>5-cambio-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>5-greeting-service</name>
+	<name>5-cambio-service</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>16</java.version>
@@ -26,10 +26,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter-config</artifactId>-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
