@@ -1,6 +1,7 @@
 package com.github.aleffalves.bookservice.controller;
 
 import com.github.aleffalves.bookservice.model.Book;
+import com.github.aleffalves.bookservice.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,8 @@ import java.util.Date;
 @RestController
 @RequestMapping("book-service")
 public class BookController {
-
+    @Autowired
+    private BookRepository bookRepository;
     @Autowired
     private Environment environment;
 
@@ -21,11 +23,12 @@ public class BookController {
     public Book findBook(@PathVariable("id") Long id,
                          @PathVariable("currency") String currency){
 
-        String property = environment.getProperty("local.server.port");
+        Book book = bookRepository.getById(id);
+        if (book == null) throw new RuntimeException("Book not Found");
 
-        return new Book(1L, "Nigel Poulton",
-                "Docker Deep Dive",
-                new Date(), Double.valueOf(13.7),
-                currency, property);
+        String property = environment.getProperty("local.server.port");
+        book.setEnvironment(property);
+
+        return book;
     }
 }
