@@ -5,10 +5,21 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 resilience4j:
+  ratelimiter:
+    instances:
+      default:
+        limitForPeriod: 2
+        limitRefreshPeriod: 10s
+  bulkhead:
+    instances:
+      default:
+        maxConcurrentCalls: 10
   retry:
     instances:
       foo-bar:
         max-attempts: 5
+        waitDuration: 1s
+        enableExponentialBackoff: true
 spring:
   application:
     name: book-service
