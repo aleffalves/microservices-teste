@@ -4,6 +4,8 @@ import com.github.aleff.alves.cambioservice.model.Cambio;
 import com.github.aleff.alves.cambioservice.repository.CambioRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,8 @@ import java.math.RoundingMode;
 @RequestMapping("cambio-service")
 public class CambioController{
 
+    private static Logger log = LoggerFactory.getLogger(CambioController.class);
+
     @Autowired
     private Environment environment;
 
@@ -29,6 +33,7 @@ public class CambioController{
     public Cambio getCambio(@PathVariable("amount") BigDecimal amount,
                             @PathVariable("from") String from,
                             @PathVariable("to") String to){
+        log.info("getCambio is called with -> {},{} and {}", amount, from, to);
         Cambio byFromAndTo = cambioRepository.findByFromAndTo(from, to);
         if(byFromAndTo == null) throw new RuntimeException("Currency Unsupported");
 

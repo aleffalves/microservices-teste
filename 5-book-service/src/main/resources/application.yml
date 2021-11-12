@@ -24,3 +24,6 @@ spring:
     schemas: book_service
     user: root
     password: Alef8464-
+  sleuth:
+    sampler:
+      probability: 1.0
